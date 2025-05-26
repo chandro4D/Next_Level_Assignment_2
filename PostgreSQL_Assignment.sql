@@ -1,3 +1,59 @@
+SELECT * FROM sightings
+
+SELECT * FROM species
+
+SELECT * FROM rangers
+
+
+--                                      Problem:1
+INSERT INTO rangers VALUES( 4,'Derek Fox' , 'Coastal Plains');
+
+--                                      Problem:2
+SELECT COUNT(DISTINCT species_id) AS unique_species_count
+FROM sightings;
+
+--                                      Problem:3
+SELECT * FROM sightings
+  WHERE location LIKE '%Pass'
+
+--                                      Problem:4
+SELECT name, COUNT(sighting_id) AS total_sightings
+FROM rangers 
+LEFT JOIN sightings ON rangers.ranger_id = sightings.ranger_id
+GROUP BY name
+ORDER BY name;
+
+--                                      Problem:5
+SELECT common_name
+FROM species 
+LEFT JOIN sightings ON species.species_id = sightings.species_id
+WHERE sightings.species_id IS NULL;
+
+
+--                                      Problem:6
+SELECT common_name, sighting_time ,name
+FROM sightings 
+JOIN rangers  ON sightings.ranger_id = rangers.ranger_id
+JOIN species  ON sightings.species_id = species.species_id
+ORDER BY sightings.sighting_time DESC
+LIMIT 2;
+
+--                                      Problem:7
+--                                      Problem:8
+--                                      Problem:9
+--                                      Problem:10
+
+
+
+
+
+
+
+
+
+
+
+
 --                     CREATE DATABASE 
 CREATE DATABASE conservation_db
 
